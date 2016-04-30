@@ -1,0 +1,50 @@
+{
+  "name": "uptae",
+  "description": "Uptae is a Slackbot that lets you know what people are up to.",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src",
+    "notify": "node ./src/tasks/notify",
+    "postinstall": "knex migrate:latest",
+    "test": "standard",
+    "lint": "eslint --fix */*.js"
+  },
+  "author": {
+    "email": "weejames@gmail.com",
+    "name": "James Constable",
+    "url": "http://jamesconstable.co.uk"
+  },
+  "bugs": {
+    "url": "https://github.com/weejames/uptae/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "botkit": "0.0.7",
+    "chrono-node": "^1.2.4",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "express-http-proxy": "^0.6.0",
+    "knex": "^0.12.2",
+    "lodash": "^4.6.1",
+    "pg": "^4.5.6",
+    "slack": "^6.1.0"
+  },
+  "keywords": [
+    "slack",
+    "slack-bot",
+    "bot",
+    "heroku"
+  ],
+  "license": "ITC",
+  "engines": {
+    "node": "6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.3.0"
+  }
+}
