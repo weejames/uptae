@@ -1,8 +1,6 @@
 exports.up = function up(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('entries', (table) => {
-      table.increments(); // integer id
-
       table.timestamp('created_at').defaultTo(
           knex.raw('now()')
       ).notNullable();
@@ -12,6 +10,8 @@ exports.up = function up(knex, Promise) {
       table.string('action');
 
       table.date('action_date');
+
+      table.primary(['user_name', 'action_date']);
     }),
   ]);
 };
