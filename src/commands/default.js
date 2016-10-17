@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const chrono = require('chrono-node');
 const config = require('../config');
+const util = require('util');
 
 const knexConfig = require('../../knexfile.js');
 const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
@@ -66,9 +67,18 @@ const handler = (payload, res) => {
         }
     }
 
-    knex('entries').insert(
-        entries
-    ).then();
+    entries.forEach( function(entry) {
+        let insert = knex('entries').insert(entry);
+        let update = knex('entries').update(entry);
+
+        let query = util.format(
+            '%s ON CONFLICT ("user_name", "action_date") DO UPDATE SET %s',
+            insert.toString(),
+            update.toString().replace(/^update ([`"])[^\1]+\1 set/i, '')
+        );
+
+        knex.raw(query).then();
+    });
 
   } else {
     if (eventString.length) {
