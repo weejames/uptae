@@ -39,4 +39,5 @@ knex('entries')
             if (err) throw err;
           });
         }
+        return knex.destroy();
     });
