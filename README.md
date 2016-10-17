@@ -30,4 +30,32 @@ As part of installation you'll set up:
 
 ### Configure Notifications
 
-Uptae will send a message to your configured channel 
+Uptae will send a message to your configured channel
+
+## Using Uptae
+
+### Adding an entry
+
+**Note:** If you already have an entry for a date, and you specify another entry for that date, the original will be overwritten.  No history, or backup of the original entry is maintained.
+
+### Seeing your existing entries
+
+_Coming soon_
+
+### Deleting an entry
+
+_Coming soon_
+
+### Creating an entry for someone else
+
+_Coming soon_
+
+When you create an entry for someone else they will be notified directly by Uptae.
+
+### Daily Notifications
+
+If you've configured the Notifications from Uptae, then each day it will post a message to your chosen channel detailing all of the entries for today and for tomorrow.
+
+### Getting Help
+
+Once Uptae is in one of your channels you can get a reminder of all of the supported operations using `/uptae help`.
