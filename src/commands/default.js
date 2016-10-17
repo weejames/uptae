@@ -2,6 +2,9 @@ const _ = require('lodash');
 const chrono = require('chrono-node');
 const config = require('../config');
 
+const knexConfig = require('../../knexfile.js');
+const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
+
 const msgDefaults = {
   response_type: 'in_channel',
   username: config('BOT_USERNAME'),
@@ -17,19 +20,26 @@ const handler = (payload, res) => {
   const eventData = chrono.parse(eventString);
 
   let endDate,
+    entries = [],
     startDate,
     updatedString;
 
   if (eventData.length) {
     updatedString = eventString.replace(eventData[0].text, '').trim();
 
-    console.log(eventData);
-
     if (eventData[0].end === undefined) {
         // same start and end day
         msg.text = 'I\'ve recorded that on ' +
         eventData[0].start.date() +
         ' you\'ll be "' + updatedString + '"';
+
+        entries.push({
+            action_date: eventData[0].start.date(),
+            action: updatedString,
+            user_name: payload.user
+        });
+
+
     } else {
         // multiple dates in range
         msg.text = 'I\'ve recorded that between ' +
@@ -37,7 +47,27 @@ const handler = (payload, res) => {
         ' and ' +
         eventData[0].end.date() +
         ' you\'ll be "' + updatedString + '"';
+
+        let startDate = eventData[0].start.date();
+        let endDate = eventData[0].end.date();
+
+        endDate = endDate.setDate(endDate.getDate() + 1);
+
+        while(startDate < endDate){
+            entries.push({
+                action_date: startDate,
+                action: updatedString,
+                user_name: payload.user
+            });
+
+            let newDate = startDate.setDate(startDate.getDate() + 1);
+            startDate = new Date(newDate);
+        }
     }
+
+    knex('entries').insert(
+        entries
+    ).then();
 
   } else {
     if (eventString.length) {
