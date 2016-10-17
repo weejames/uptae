@@ -8,7 +8,7 @@
     "notify": "node ./src/tasks/notify",
     "postinstall": "knex migrate:latest",
     "test": "standard",
-    "lint": "eslint --fix */*.js"
+    "lint": "eslint --fix src/*.js"
   },
   "author": {
     "email": "weejames@gmail.com",
