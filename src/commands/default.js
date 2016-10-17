@@ -4,6 +4,7 @@ const config = require('../config');
 
 const knexConfig = require('../../knexfile.js');
 const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
+const moment = require('moment');
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -30,7 +31,7 @@ const handler = (payload, res) => {
     if (eventData[0].end === undefined) {
         // same start and end day
         msg.text = 'I\'ve recorded that on ' +
-        eventData[0].start.date() +
+        moment(eventData[0].start.date()).format('MMMM Do') +
         ' you\'ll be "' + updatedString + '"';
 
         entries.push({
@@ -43,9 +44,9 @@ const handler = (payload, res) => {
     } else {
         // multiple dates in range
         msg.text = 'I\'ve recorded that between ' +
-        eventData[0].start.date() +
+        moment(eventData[0].start.date()).format('MMMM Do') +
         ' and ' +
-        eventData[0].end.date() +
+        moment(eventData[0].end.date()).format('MMMM Do') +
         ' you\'ll be "' + updatedString + '"';
 
         let startDate = eventData[0].start.date();
