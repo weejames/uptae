@@ -29,7 +29,7 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-  res.send('index');
+  res.send('Hello');
 });
 
 app.post('/commands', (req, res) => {
@@ -62,10 +62,7 @@ app.post('/commands', (req, res) => {
 app.listen(config('PORT'), (err) => {
   if (err) throw err;
 
-  console.log(`\nUptae started on port ${config('PORT')}`);
-
   if (config('SLACK_TOKEN')) {
-    console.log(`@uptae is active\n`);
     bot.listen({ token: config('SLACK_TOKEN') });
   }
 });
