@@ -2,6 +2,8 @@
 
 [![Twitter: @weejames](https://img.shields.io/badge/contact-@weejames-blue.svg?style=flat)](https://twitter.com/weejames)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 Uptae is a Slackbot that you and your team can use to let each other know what you're upto.
 
 Stuck in meetings all day? Out of the Office?  On holiday? Tell Uptae and it'll let everyone know.
