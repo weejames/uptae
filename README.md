@@ -20,15 +20,31 @@ You'll need need a Slack team and the ability to [set up custom integrations](ht
 
 As part of installation you'll set up:
 
-1. Incoming Slack web hook for Uptae to post messages
-2. Outgoing Slack web hook to allow Uptae to receive messages
+1. Slash Command to allow you to interact with Uptae
+2. Incoming Web Hook to let Uptae post daily summaries
+
+### Configuring the Slash Command
+
+While signed in to your Slack team make a [Custom Integration](https://slack.com/apps/build/custom-integration), and select the 'Slash Commands' option.
+
+1. Give your command a name (like `/uptae`) and select 'Add Slash Command Integration'.
+2. In the URL field enter the enter the URL of your Heroku Application with the `/commands` endpoint (you might need to come back to this after deployment if using the Heroku Button with a randomly generated name).
+3. A Token will have been generated.  This will be the `SLACK_TOKEN` value you need during deployment.
+4. Set the 'Customize Name' value to 'Uptae'.
+
+
+### Configuring the Incoming Web Hook
+
+Again, while signed in to your Slack team again make a [Custom Integration](https://slack.com/apps/build/custom-integration), but this time select 'Incoming Web Hooks'.
+
+1. Choose the channel you'd like Uptae to post it's daily summary to and select 'Add Incoming Web Hooks integration'.
+2. Make a note of the 'Webhook URL'.  This will be the `WEBHOOK_URL` you need during deployment.
+3. Enter the username you entered previously into the 'Customize Name' field and select 'Save Settings'.
 
 ### Environment Variables
 
-`BOT_USERNAME` The name you'd like the Bot to use when communicating with your Slack team (Defaults to: Uptae)
-`BOT_COMMAND_TOKEN` From Slack Web Integrations page
-`SLACK_TOKEN` ??
-`WEBHOOK_URL` URL of your Slack domain?
+* `WEBHOOK_URL` The Webhook URL from configuring the Incoming Web Hook
+* `SLACK_TOKEN`
 
 ### Configure Notifications
 
