@@ -2,7 +2,6 @@
   "name": "Uptae",
   "description": "Uptae is a Slackbot that lets you know what people are up to.",
   "repository": "https://github.com/weejames/uptae",
-  "logo": "",
   "success_url": "/",
   "env": {
     "HEROKU_APP_NAME": {
