@@ -8,12 +8,12 @@
   },
   "env": {
     "WEBHOOK_URL": {
-      "description": "Webhook URL from Slack to allow the bot to post information to your channel",
+      "description": "Incoming Web Hook URL from Slack",
       "required": true
     },
     "SLACK_TOKEN": {
-      "description": "Slack bot RTM API token",
-      "required": false
+      "description": "Slack Slash Command token",
+      "required": true
     },
     "NODE_ENV": "production"
   },
