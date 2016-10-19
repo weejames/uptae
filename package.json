@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src",
     "notify": "node ./src/tasks/notify",
-    "postinstall": "knex migrate:latest",
+    "migrate": "knex migrate:latest",
     "test": "standard",
     "lint": "eslint --fix src/*.js"
   },
