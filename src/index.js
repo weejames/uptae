@@ -3,7 +3,6 @@ const express = require('express');
 const proxy = require('express-http-proxy');
 const _ = require('lodash');
 const url = require('url');
-const bot = require('./bot');
 const config = require('./config');
 const commands = require('./commands');
 const defaultCommand = require('./commands/default');
@@ -61,8 +60,4 @@ app.post('/commands', (req, res) => {
 
 app.listen(config('PORT'), (err) => {
   if (err) throw err;
-
-  if (config('SLACK_TOKEN')) {
-    bot.listen({ token: config('SLACK_TOKEN') });
-  }
 });
