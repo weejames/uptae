@@ -27,5 +27,13 @@
     },
     "NODE_ENV": "production"
   },
-  "image": "heroku/nodejs"
+  "image": "heroku/nodejs",
+  "addons": [
+      {
+        "plan": "heroku-postgresql",
+        "options": {
+          "version": "9.5"
+        }
+      }
+    ]
 }
