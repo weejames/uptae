@@ -43,7 +43,7 @@ app.post('/commands', (req, res) => {
   }
 
     // we check a valid token has been provided in the payload
-  if (payload.token !== config('BOT_COMMAND_TOKEN')) {
+  if (payload.token !== config('SLACK_TOKEN')) {
     const err = 'An invalid token was provided. Is your Slack slash token correctly configured?';
 
     res.status(401).end(err);

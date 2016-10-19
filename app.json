@@ -7,15 +7,6 @@
     "postdeploy": "npm run migrate"
   },
   "env": {
-    "BOT_USERNAME": {
-      "description": "The name you want Uptae to use when communicating with your Slack channel",
-      "required": true,
-      "value": "Uptae"
-    },
-    "BOT_COMMAND_TOKEN": {
-      "description": "Slash command token, for the command endpoint",
-      "required": true
-    },
     "WEBHOOK_URL": {
       "description": "Webhook URL from Slack to allow the bot to post information to your channel",
       "required": true

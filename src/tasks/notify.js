@@ -6,7 +6,6 @@ const knex = require('knex')(knexConfig[process.env.NODE_ENV]);
 
 const msgDefaults = {
   response_type: 'in_channel',
-  username: config('BOT_USERNAME'),
   icon_emoji: config('ICON_EMOJI'),
 };
 
